@@ -15,7 +15,7 @@
 	}
 	
 	function validate_password($pass){
-		if (strlen($pass) < '3') {
+		if (strlen($pass) < '4') {
 			echo "Your Password Must Contain At Least 3 Characters!";
 			return 0;
 		}
