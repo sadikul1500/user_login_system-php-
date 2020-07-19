@@ -16,21 +16,27 @@
 	
 	function validate_password($pass){
 		if (strlen($pass) < '4') {
-			echo "Your Password Must Contain At Least 3 Characters!";
-			return 0;
+			return "Your Password Must Contain At Least 4 Characters!";
+			//return 0;
 		}
-		if(!preg_match("#[0-9]+#",$pass)) {
-			echo "Your Password Must Contain At Least 1 Number!";
-			return 0;
+		elseif(!preg_match("#[0-9]+#",$pass)) {
+			return "Your Password Must Contain At Least 1 Number!";
+			//return 0;
+		}
+		elseif(!preg_match("#[A-Z]+#",$password)) {
+			return "Your Password Must Contain At Least 1 Capital Letter!";
+		}
+		elseif(!preg_match("#[a-z]+#",$password)) {
+			return"Your Password Must Contain At Least 1 Lowercase Letter!";
 		}
 		
-		return 1;
+		return "1";
 	}
 	
 	
 	$userName = $password = $confirm_password = "";
 	$errors = array('userName'=> '', 'password'=> '', 'confirm_password'=> '');
-	
+	$id = 0;
 	
 	if(isset($_POST['submit'])){
 		//session_start();
@@ -54,19 +60,19 @@
 		//echo count($errors);
 		
 		if (array_filter($errors)){
-			echo 'wrong submission<br>';
+			$id = 1; //error('try again');
 		}
 		
 		else{
 			if(!validate_username($userName))
 			{
-				echo "username can contain only alphanumeric values and ['.', '_', '-', '%']";
+				$errors['userName'] = "username can contain only alphanumeric values and ['.', '_', '-', '%']";
 				//header('location:SignUp.php');
 			}
 			
-			if(!validate_password($password))
+			if(validate_password($password) != "1")
 			{
-				//echo 'username can contain only alphanumeric values and ['.', '_', '-', '%' ]'
+				$errors['password'] = validate_password($password);
 				//header('location:SignUp.php');
 			}
 			
@@ -92,7 +98,7 @@
 					}
 				}
 				else{
-					echo 'registration error: The username already exists' ;
+					$id = 2; //error('registration error: The username already exists') ;
 				}
 			}
 			
@@ -112,11 +118,10 @@
 
 <html>
 	<head>
-		<title>sign up.php</title>
+		<title>sign up</title>
 	</head>
 	<body>
-		<?php include('template/header.php');?>
-		
+		<?php include('template/signIn_signUp.php'); ?>
 		<section class="container grey-text">
 			<h4 class="center">Create an account</h4>
 			<form class="white" action="SignUp.php" method="POST"> 
@@ -147,6 +152,15 @@
 				
 			</form>
 		</section>
+		<?php
+			if($id == 1){
+				//echo '<script>','error("wrong!!!Try again");','</script>';
+			}
+			if($id==2){
+				echo '<script>','error("registration error: username already exists");','</script>';
+			}
+		?>
+		
 		<?php include('template/footer.php');?>
 	</body>
 
