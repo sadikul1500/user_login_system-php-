@@ -1,5 +1,5 @@
 # user_login_system-php-
-session php+mysql+html+css
+session php+mysql+html+css+js
 
 There are three pages -
 1. Signup Page: three fields - username, password, retype-password. Also proper validation for these fields.
