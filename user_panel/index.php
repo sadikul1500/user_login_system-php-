@@ -18,6 +18,7 @@
 <html>
 	<head>
 		<title>Index Page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<script src="javascript.js"></script>
 	</head>
 	
@@ -27,7 +28,7 @@
 		<!-- <script> alert('')</script> -->
 		<?php
 			if($id==1){
-				echo '<script type="text/javascript">','error("Access denied to home page");','</script>';
+				//echo '<script type="text/javascript">','error("Access denied to home page");','</script>';
 				//$id = 1;
 			}
 			else{
