@@ -6,7 +6,7 @@
 
 <html>
 	<head>
-		<!--<title>Home Page</title> -->
+		<title>Home Page</title> 
 	</head>
 
 	<body>
@@ -28,7 +28,7 @@
 		
 		<?php else: ?>
 			<?php
-				header('location:index.php')
+				header('location:index.php?id="0"')
 			?>	
 		
 		<?php endif ?>
