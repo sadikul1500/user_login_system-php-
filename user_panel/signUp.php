@@ -23,10 +23,10 @@
 			return "Your Password Must Contain At Least 1 Number!";
 			//return 0;
 		}
-		elseif(!preg_match("#[A-Z]+#",$password)) {
+		elseif(!preg_match("#[A-Z]+#",$pass)) {
 			return "Your Password Must Contain At Least 1 Capital Letter!";
 		}
-		elseif(!preg_match("#[a-z]+#",$password)) {
+		elseif(!preg_match("#[a-z]+#",$pass)) {
 			return"Your Password Must Contain At Least 1 Lowercase Letter!";
 		}
 		
@@ -119,6 +119,7 @@
 <html>
 	<head>
 		<title>sign up</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	</head>
 	<body>
 		<?php include('template/signIn_signUp.php'); ?>
