@@ -5,7 +5,7 @@
 	
 	$userName = $password = "";
 	$errors = array('userName'=> '', 'password'=> '');
-	
+	$id = 0;
 	if(isset($_POST['submit'])){
 		$userName = mysqli_real_escape_string($conn, $_POST['userName']);
 		$password = mysqli_real_escape_string($conn, $_POST['password']);
@@ -19,7 +19,7 @@
 		}
 		
 		if (array_filter($errors)){
-			echo 'wrong submission<br>';
+			$id = 1;
 		}
 		
 		else{
@@ -35,7 +35,7 @@
 			}
 			
 			else{
-				echo 'username or password is invalid. Please try again.';
+				$id = 2;//error('username or password is invalid. Please try again.');
 				//header('location:signIn.php');
 			}
 		}
@@ -45,10 +45,10 @@
 <html>
 	<head>
 		<title>Sign In</title>
+		
 	</head>
 	<body>
-		<?php include('template/header.php');?>
-		
+		<?php include('template/signIn_signUp.php'); ?>
 		<section class="container grey-text">
 			<h4 class="center">Sign In to proceed</h4>
 			<form class="white" action="SignIn.php" method="POST"> 
@@ -69,6 +69,16 @@
 				</p>
 			</form>
 		</section>
+		
+		<?php
+			if($id == 1){
+				//echo '<script>','error("Try again");','</script>';
+			}
+			if($id==2){
+				echo '<script>','error("username or password is invalid. Please try again.");','</script>';
+			}
+				
+		?>
 		<?php include('template/footer.php');?>
 	</body>
 
