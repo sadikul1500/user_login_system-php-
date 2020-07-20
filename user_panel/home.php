@@ -29,7 +29,7 @@
 		
 		<?php else: ?>
 			<?php
-				header('location:index.php?id="0"')
+				header('location:index.php')
 			?>	
 		
 		<?php endif ?>
