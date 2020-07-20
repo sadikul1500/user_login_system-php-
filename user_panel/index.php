@@ -1,15 +1,17 @@
 <?php
 	session_start();
-	$id = 0;
+	//$id = 0;
 	
 	if(isset($_GET['logout'])){
 		session_destroy();
-		unset($_GET['userName']);
+		unset($_SESSION['userName']);
 	}
 	
-	elseif(isset($_GET['id'])){
-		$id = 1; //echo 'no';
+	elseif(isset($_SESSION['userName'])){
+		//$id = 1; //echo 'no';
 		//echo '<script type="text/javascript">','error();','</script>';
+		//echo 'ok';
+		header('location:home.php');
 	}
 	
 ?>
@@ -26,15 +28,8 @@
 		<?php include('template/header.php') ?>
 		<?php include('template/footer.php') ?>
 		<!-- <script> alert('')</script> -->
-		<?php
-			if($id==1){
-				//echo '<script type="text/javascript">','error("Access denied to home page");','</script>';
-				//$id = 1;
-			}
-			else{
-				header('location:home.php');
-			}
-			
-		?>
+		<!--
+		
+		-->
 	</body>
 </html>
